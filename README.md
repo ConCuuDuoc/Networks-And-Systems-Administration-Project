@@ -1,91 +1,7 @@
-```
-VIETNAM NATIONAL UNIVERSITY HOCHIMINH CITY
-```
-## UNIVERSITY OF INFORMATION TECHNOLOGY
-
-## FACULTY OF COMPUTER NETWORKS AND
-
-## COMMUNICATIONS
-
 DOAN HAI DANG **–** TRAN THI MY HUYEN **–** PHAN THI HONG NHUNG
 
-# NETWORKS AND SYSTEMS
+# NETWORKS AND SYSTEMS ADMINISTRATION PROJECT: NAT + DHCP ON LINUX SERVER FILE SERVER: NFS, SMB, FTP ON LINUX
 
-# ADMINISTRATION PROJECT
-
-# NAT + DHCP ON LINUX SERVER
-
-# FILE SERVER: NFS, SMB, FTP ON LINUX
-
-```
-CLASS: NT132.O11.ATCL
-```
-
-
-```
-NATIONAL UNIVERSITY HOCHIMINH CITY
-```
-## UNIVERSITY OF INFORMATION TECHNOLOGY
-
-## FACULTY OF COMPUTER NETWORKS AND
-
-## COMMUNICATIONS
-
-```
-DOAN HAI DANG – 21520679
-TRAN THI MY HUYEN – 21520269
-PHAN THI HONG NHUNG - 21521250
-```
-# NETWORKS AND SYSTEMS
-
-# ADMINISTRATION PROJECT
-
-# NAT + DHCP ON LINUX SERVER
-
-# FILE SERVER: NFS, SMB, FTP ON LINUX
-
-```
-CLASS: NT132.O11.ATCL
-```
-```
-PROJECT ADVISOR
-MSc TRAN THI DUNG
-```
-### HO CHI MINH CITY, 2023
-
-
-```
-i
-```
-## ACKNOWLEDGMENTS
-
-First and foremost, we would like to express our gratitude to our advisor, MSc Tran
-Thi Dung, for her guidance and consistent supervision, as well as for providing crucial
-project information and assisting us in completing the research.
-
-Our gratitude and appreciation also extend to our colleagues and lecturers who assisted
-us in the development of the project, as well as to those who have volunteered their
-time and skills to assist us.
-
-
-## ii
-
-TABLE OF CONTENTS
-
-ACKNOWLEDGMENTS ......................................................................................... i
-
-TABLE OF CONTENTS .......................................................................................... ii
-
-LIST OF FIGURES ................................................................................................. iv
-
-
-
-iv
-
-
-
-- HO CHI MINH CITY,
-- Introduction LIST OF TABLES vii
 - 1.1 General information
 - 1.1.1 Linux Server
 - 1.1.2 NAT and DHCP network services
@@ -121,102 +37,6 @@ iv
 - 3.1.4 SMB
 - 3.1.5 FTP
 - 3.2 Conclusion
-- REFERENCES
-- APPENDIX
-- Task Assignment
-- Self Assessment
-- Figure 1: Static NAT LIST OF FIGURES
-- Figure 2: Dynamic NAT
-- Figure 3: Port Address Translation (PAT)
-- Figure 4: DHCP Components
-- Figure 5: Ansible components
-- Figure 6: NAT operation
-- Figure 7: DHCP operation
-- Figure 8: NFS operation
-- Figure 9: SMB operation
-- Figure 10: FTP Active mode
-- Figure 11: FTP Passive mode
-- Figure 12: Ansible operation
-- Figure 13: Project topology
-- Figure 14: Install NAT: iptables
-- Figure 15: Install NAT: iptables-persistent [1]
-- Figure 16: Install NAT: iptables-persistent [2]
-- Figure 17: Install isc-dhcp-server
-- Figure 18: Install nfs-kernel-server
-- Figure 19: Install samba on server
-- Figure 20: Install vsftpd on server
-- Figure 21: Install nfs-common on client
-- Figure 22: Install cifs-utils on client
-- Figure 23: Install filezilla on client
-- Figure 24: Install server’s packages using Ansible
-- Figure 25: Ubuntu server netplan
-- Figure 26: Ubuntu server network interfaces
-- Figure 27: Define DHCP interfaces
-- Figure 28: DHCP configuration
-- Figure 29: DHCP server status
-- Figure 30: Enable forwarding in sysctl.conf
-- Figure 31: Enables the changes
-- Figure 32: Iptables policies.......................................................................................................
-- Figure 33: Network interfaces
-- Figure 34: Save iptables policies v
-- Figure 35: NFS Server status
-- Figure 36: Create root NFS directory
-- Figure 37: Set NFS folder permissions
-- Figure 38: Define access for 192.168.23.11
-- Figure 39: NFS Server status after restarting
-- Figure 40: Create Group and User in SMB Server
-- Figure 41: SMB Server status
-- Figure 42: Create root SMB directory and change permissions
-- Figure 43: Edit smb.conf file [1]
-- Figure 44: Edit smb.conf file [2]
-- Figure 45: SMB Server status after restarting
-- Figure 46: FTP Server status
-- Figure 47: FTP Server configuration Firewall
-- Figure 48: FTP Server create User
-- Figure 49: Set up OpenSSL protocol
-- Figure 50: Create FTP folder and set permissions
-- Figure 51: Edit vsftpd.conf file [1]
-- Figure 52: Edit vsftpd.conf file [2]
-- Figure 53: Edit vsftpd.conf file [3]
-- Figure 54: Create SSH keys in control node
-- Figure 55: Distribute public key to managed nodes
-- Figure 56: Edit inventory file [1]..............................................................................................
-- Figure 57: Edit inventory file [2]..............................................................................................
-- Figure 58: Create Ansible playbook.........................................................................................
-- Figure 59: Running playbook
-- Figure 60: Client side IP
-- Figure 61: Test DHCP
-- Figure 62: Ip route list on client
-- Figure 63: Test NAT
-- Figure 64: Create a NFS test file in server
-- Figure 65: Create a NFS local directory
-- Figure 66: Running NFS mount command
-- Figure 67: Client edits the NFS test file
-- Figure 68: Changes in NFS test file vi
-- Figure 69: Create a SMB test file in server
-- Figure 70: Connect to SMB share folder
-- Figure 71: Sign in with user created
-- Figure 72: Find the SMB test file
-- Figure 73: Edit SMB test file
-- Figure 74: Changes in SMB test file
-- Figure 75: The packet has been encrypted
-- Figure 76: Server signing test
-- Figure 77: Log in to FileZilla
-- Figure 78: Create new folder on client
-- Figure 79: Move to the new folder
-- Figure 80: Test with Wireshark
-
-
-```
-vii
-```
-LIST OF TABLES
-
-Table 1: Topology details ......................................................................................................... 12
-Table 2: NFS permission table ................................................................................................. 21
-Table 3: Task assignment ......................................................................................................... 38
-Table 4: Self assessment ........................................................................................................... 38
-
 
 ## Introduction
 
@@ -294,33 +114,37 @@ configuring systems, and managing applications.
 ## 1.2.1 NAT and DHCP
 
 ### 1.2.1.1 NAT
-
-```
 There are three ways to configure NAT:
-```
+
 - Static NAT: This allows for a one-to-one mapping between local and global
     addresses. These mappings are configured by the network administrator and
     remained constant. Static NAT is typically used for servers and other devices
     that need to be consistently accessible from the public internet.
+  
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/7cc609ec-955b-4554-a9da-30c88b585172)
 
-```
-Figure 1 : Static NAT
-```
+<p align="center">
+    Figure 1 : Static NAT
+</p>
 - Dynamic NAT: A single public IP address can be shared by multiple private IP
     addresses. If the pool's IP addresses are all in use, any additional packets will be
     dropped. Dynamic NAT is typically used for home networks and small
     businesses, where there are only a few devices that need to access the public
     Internet.
+    
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/60487fb9-3d98-44b5-9a74-2fd8e850577a)
 
-
-## Figure 2: Dynamic NAT
+Figure 2: Dynamic NAT
 
 - Port Address Translation (PAT) – Also known as NAT overload: One public
     IP address is used for all internal devices, but a different port is assigned to each
     private IP address. PAT is the most commonly used method as it is cost-
     effective.
 
-## Figure 3: Port Address Translation (PAT)
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/02657204-a20b-4940-ad54-36fd89780838)
+
+
+Figure 3: Port Address Translation (PAT)
 
 ### 1.2.1.2 DHCP
 
@@ -329,28 +153,24 @@ Figure 1 : Static NAT
     clients. It maintains a pool of available IP addresses to allocate to clients.
 - DHCP Client: The DHCP client is a device that requests and obtains IP
     addresses and other network configuration parameters from a DHCP server.
-
-
 - DHCP Relay: The DHCP relay agent is an optional device that forwards DHCP
     messages between DHCP clients and DHCP servers. It is often used to extend
     the reach of a DHCP server beyond a single subnet.
-- Others: IP address pool, Subnets, DNS Server, Lease time, ....
+ - Others: IP address pool, Subnets, DNS Server, Lease time, ....
 
-## Figure 4: DHCP Components
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/3ec7eb03-ec62-40b4-9b6d-10ea545d85bb)
+
+Figure 4: DHCP Components
 
 ## 1.2.2 File-sharing protocols: NFS, SMB, FTP
 
 ### 1.2.2.1 NFS
-
-```
 The main components of NFS are:
-```
 - NFS server: responsible for exporting file systems to NFS clients.
 - NFS client: responsible for mounting NFS file systems from NFS servers.
 
-1.2.2.2 SMB
+### 1.2.2.2 SMB
 The main components of SMB are:
-
 - SMB server: individual or multiple network servers that store SMB resources
     and grant or deny client access.
 - SMB client: main device that accesses files and folders on an SMB server.
@@ -360,12 +180,8 @@ The main components of SMB are:
 - SMB share: any resource housed on an SMB server; can also be referred to as
     SMB file shares.
 
-
 ### 1.2.2.3 FTP
-
-```
 The main components of FTP are:
-```
 - FTP server: Manages files and folders, authenticates and authorizes users.
 - FTP client: Browses and transfers files to and from the server.
 - Control connection: Negotiates transfer mode, authenticates and authorizes
@@ -373,10 +189,7 @@ The main components of FTP are:
 - Data connection: Transfers files between the client and server.
 
 ## 1.2.3 Ansible
-
-```
 The main components of Ansible are:
-```
 - Control node: The controller is the machine that runs Ansible and manages the
     nodes.
 - Managed nodes: The managed nodes are the machines that Ansible controls.
@@ -385,9 +198,9 @@ The main components of Ansible are:
     managed nodes.
 - Modules: Modules are Python code that Ansible uses to perform tasks on the
     managed nodes.
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/e1bbf45f-0abb-4d3d-a2c4-040a1907d431)
 
-## Figure 5: Ansible components
-
+Figure 5: Ansible components
 
 ## 1.3 Operation
 
@@ -406,7 +219,10 @@ The main components of Ansible are:
 
 ## 1.3.2 DHCP
 
-## Figure 7: DHCP operation
+![image](https://github.com/ConCuuDuoc/Networks-And-Systems-Administration-Project/assets/46748862/7c02435c-a908-4dee-806f-2daacf03c0b1)
+
+
+Figure 7: DHCP operation
 
 
 Step 1: DHCP Discover
@@ -432,7 +248,6 @@ Step 4: DHCP Ack
 - Typically, client communication occurs through UDP port 68, while servers use
     port 67. There might be slight variations based on network equipment vendors,
     but this is the general operational pattern.
-
 
 ## 1.3.3 File-sharing protocols: NFS, SMB, FTP
 
